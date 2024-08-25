@@ -6,7 +6,7 @@ use Exception;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerExhaustEvent;
 use pocketmine\event\player\PlayerItemConsumeEvent;
-use pocketmine\item\ItemIds;
+use pocketmine\item\ItemTypeIds;
 use pocketmine\plugin\PluginBase;
 
 class NoFoodPM extends PluginBase implements Listener
