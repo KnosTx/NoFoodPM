@@ -1,6 +1,6 @@
 <?php
 
-namespace DavyCraft648\NoFood;
+namespace NurAzliYT\NoFoodPM;
 
 use Exception;
 use pocketmine\event\Listener;
@@ -9,7 +9,7 @@ use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\item\ItemIds;
 use pocketmine\plugin\PluginBase;
 
-class NoFood extends PluginBase implements Listener
+class NoFoodPM extends PluginBase implements Listener
 {
 	public function onEnable()
 	{
