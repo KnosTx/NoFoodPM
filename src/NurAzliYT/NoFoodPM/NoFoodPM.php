@@ -11,7 +11,7 @@ use pocketmine\plugin\PluginBase;
 
 class NoFoodPM extends PluginBase implements Listener
 {
-	public function onEnable()
+	public function onEnable(): void
 	{
 		$this->saveDefaultConfig();
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -24,7 +24,7 @@ class NoFoodPM extends PluginBase implements Listener
 	public function onConsume(PlayerItemConsumeEvent $event)
 	{
 		$player = $event->getPlayer();
-		$lvlFolName = $player->getLevel()->getFolderName();
+		$lvlFolName = $player->getWorld()->getFolderName();
 		$itemId = $event->getItem()->getId();
 		$lvlACName = (array)$this->getConfig()->get("worlds");
 		$aItemAC = (array)$this->getConfig()->get("allowedFood");
@@ -50,7 +50,7 @@ class NoFoodPM extends PluginBase implements Listener
 	public function onExhaust(PlayerExhaustEvent $event)
 	{
 		if (!((bool)$this->getConfig()->get("noHungry"))) return;
-		$lvlFolName = $event->getPlayer()->getLevel()->getFolderName();
+		$lvlFolName = $event->getPlayer()->getWorld()->getFolderName();
 		$lvlACName = (array)$this->getConfig()->get("worlds");
 		if (!in_array($lvlFolName, $lvlACName)) return;
 		$event->setCancelled();
