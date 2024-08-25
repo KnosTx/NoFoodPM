@@ -2,13 +2,11 @@
 
 namespace NurAzliYT\NoFoodPM;
 
-use Exception;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerExhaustEvent;
 use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\item\ItemTypeIds;
 use pocketmine\plugin\PluginBase;
-use pocketmine\permission\DefaultPermissions;
 use pocketmine\player\Player;
 
 class NoFoodPM extends PluginBase implements Listener
@@ -32,16 +30,18 @@ class NoFoodPM extends PluginBase implements Listener
         $lvlACName = (array)$this->getConfig()->get("worlds");
         $aItemAC = (array)$this->getConfig()->get("allowedFood");
 
-        if ($player->hasPermission("nofoodpm.bypass")) return;
+        if ($player->hasPermission("nofood.bypass")) return;
         if (!in_array($lvlFolName, $lvlACName, true)) return;
 
         foreach ($aItemAC as $aItem) {
             $uAItem = strtoupper($aItem);
-            $aItemType = ItemTypeIds::AIR; // Default to AIR in case of failure
-            try {
+
+            // Periksa apakah konstanta item valid
+            if (defined(ItemTypeIds::class . "::$uAItem")) {
                 $aItemType = constant(ItemTypeIds::class . "::$uAItem");
-            } catch (Exception $e) {
-                if (is_int($aItem)) $aItemType = $aItem;
+            } else {
+                // Asumsikan $aItem adalah ID numerik jika tidak ada konstanta yang cocok
+                $aItemType = (int)$aItem;
             }
 
             if ($itemType === $aItemType) return;
@@ -63,9 +63,9 @@ class NoFoodPM extends PluginBase implements Listener
 
         $lvlFolName = $player->getWorld()->getFolderName();
         $lvlACName = (array)$this->getConfig()->get("worlds");
-        
+
         if (!in_array($lvlFolName, $lvlACName, true)) return;
-        
+
         $event->cancel();
     }
 }
