@@ -32,7 +32,7 @@ class NoFoodPM extends PluginBase implements Listener
         $lvlACName = (array)$this->getConfig()->get("worlds");
         $aItemAC = (array)$this->getConfig()->get("allowedFood");
 
-        if ($player->hasPermission("nofood.bypass")) return;
+        if ($player->hasPermission("nofoodpm.bypass")) return;
         if (!in_array($lvlFolName, $lvlACName, true)) return;
 
         foreach ($aItemAC as $aItem) {
