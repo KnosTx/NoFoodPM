@@ -3,7 +3,7 @@ Don't eat! You are fasting!
 
 This plugin will **forbid** players to eat
 ### Permission
- - nofood.bypass - Allow the player to eat - default: false
+ - nofoods.bypass - Allow the player to eat - default: false
  
 ### Config
 ```yaml
