@@ -1,11 +1,11 @@
-name: NoFood
-main: DavyCraft648\NoFood\NoFood
+name: NoFoodPM
+main: NurAzliYT\NoFoodPM\NoFoodPM
 version: 0.0.1
-api: 3.0.0
-author: DavyCraft648
+api: 5.0.0
+author: NurAzliYT, NurAzli, DavyCraft648
 description: Feels like you are fasting
 website: https://github.com/DavyCraft648/NoFood
 permissions:
-  nofood.bypass:
+  nofoods.bypass:
     description: Allow player to eat
-    default: false
+    default: true
